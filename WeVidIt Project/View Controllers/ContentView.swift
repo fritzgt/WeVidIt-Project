@@ -13,7 +13,8 @@ struct ContentView: View {
     @State var citiesArray: [City] = [
         City(cityName: .Cannes),
         City(cityName: .Venice),
-        City(cityName: .Berlin)
+        City(cityName: .Berlin),
+        City(cityName: .Other, isSelected: true)
     ]
     
     @State var selectionCounter = 0
@@ -24,7 +25,7 @@ struct ContentView: View {
             VStack {
                 
                 Form{
-                    ForEach( 0..<citiesArray.count, id: \.self){ index in
+                    ForEach( 0..<citiesArray.count - 1, id: \.self){ index in
                         
                         Button (action:
                                     {
