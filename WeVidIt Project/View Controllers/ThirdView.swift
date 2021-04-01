@@ -13,20 +13,28 @@ struct ThirdView: View {
     var finalSelection: City? {
         didSet{
             input = finalSelection!.cityName.rawValue
+            print("Did set")
         }
     }
     @State var entryArray: [String] = [""]
     
-    
+    init(finalSelection: City){
+        self.finalSelection = finalSelection
+        self._input = State(wrappedValue: finalSelection.cityName.rawValue)
+    }
+   
     //MARK: - body
     var body: some View {
         
         HStack{
             VStack{
-                TextField(input, text: $input)
-                    .font(Font.system(size: 24, design: .default))
-                    .padding(.leading, 10)
-                Divider()
+                
+                    
+                    TextField(input, text: $input)
+                        .font(Font.system(size: 24, design: .default))
+                        .padding(.leading, 10)
+                    Divider()
+                
             }
             Button("+ Add") {
                 //Create the action here
@@ -51,13 +59,12 @@ struct ThirdView: View {
                 }
             }
         }
-        
     }
 }
 
 struct ThirdView_Previews: PreviewProvider {
     static var previews: some View {
-        ThirdView()
+        ThirdView(finalSelection: City(cityName: .Other))
     }
 }
 

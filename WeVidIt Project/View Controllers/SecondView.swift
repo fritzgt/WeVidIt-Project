@@ -30,7 +30,7 @@ struct SecondView: View {
                 }
             }
         }
-        NavigationLink(destination:  ThirdView(finalSelection: selectedCity)) {
+        NavigationLink(destination:  ThirdView(finalSelection: selectedCity ?? City(cityName: .Other))) {
             Text("NEXT").font(.system(size: 24))
         }.disabled(selectedCity?.cityName == nil)
     }
