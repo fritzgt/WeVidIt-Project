@@ -24,7 +24,7 @@ struct ContentView: View {
         NavigationView{
             VStack {
                 
-                Form{
+                List{
                     ForEach( 0..<citiesArray.count - 1, id: \.self){ index in
                         
                         Button (action:
@@ -54,7 +54,7 @@ struct ContentView: View {
                     Text("NEXT").font(.system(size: 24))
                 }.disabled(selectionCounter <= 0)
             }
-        }
+        }.navigationViewStyle(StackNavigationViewStyle())//Use to prevent constrain errors
     }
 }
 
